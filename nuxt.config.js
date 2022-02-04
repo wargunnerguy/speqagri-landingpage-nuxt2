@@ -43,8 +43,18 @@ export default {
           {code: 'en', iso: 'en-EN', file: 'en.json',},
           {code: 'et', iso: 'et-EE', file: 'et.json',},
         ],
-        lazy: true,
+        lazy: false,
         defaultLocale: process.env.VUE_APP_I18N_LOCALE || 'et',
+        detectBrowserLanguage: {
+          alwaysRedirect: false,
+          fallbackLocale: 'et',
+          redirectOn: 'root',
+          useCookie: true,
+          cookieCrossOrigin: false,
+          cookieDomain: null,
+          cookieKey: 'i18n_redirected',
+          cookieSecure: false
+        },
         vueI18n: {
           fallbackLocale: 'et',
 

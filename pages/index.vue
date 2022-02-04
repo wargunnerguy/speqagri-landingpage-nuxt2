@@ -1,7 +1,6 @@
 <template>
   <main>
     <h1>{{ $t('active') }}</h1>
-
     <nuxt-link
       v-if="$i18n.locale !== 'et'"
       :to="switchLocalePath('et')"
@@ -15,6 +14,7 @@
     >
       Eesti
     </nuxt-link>
+    <TheLocaleChanger></TheLocaleChanger>
   </main>
 </template>
 
