@@ -1,4 +1,4 @@
-# speqagri-landingpage-nuxt2
+# SPEQ Agri landingpage Nuxt2
 
 ## Build Setup
 
