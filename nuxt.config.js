@@ -16,7 +16,7 @@ export default {
       {name: 'format-detection', content: 'telephone=no'}
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+      {rel: 'icon', type: 'image/x-icon', href: '/logo.png'}
     ]
   },
 
@@ -26,7 +26,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/lazyload', ssr: false }
+    {src: '~/plugins/lazyload', ssr: false},
+    {src: '~/plugins/bootstrap.js', mode: 'client'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

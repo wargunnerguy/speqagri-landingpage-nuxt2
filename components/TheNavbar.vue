@@ -19,12 +19,13 @@
             </ul>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" href="#" tabindex="-1" aria-disabled="true" to="/calc">
+            <nuxt-link class="nav-link" href="#" tabindex="-1" aria-disabled="true" to="/rakendused/hinnakalkulaator">
               {{ $t('calculator') }}
             </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" aria-current="page" :to="{name: 'Jobs'}">{{ $t('job_vacancies') }} <span
+            <nuxt-link class="nav-link" aria-current="page" to="/teenused/jobs">{{ $t('job_vacancies') }}
+              <span
                 class="badge bg-danger">0</span></nuxt-link>
           </li>
           <li class="nav-item">
@@ -33,7 +34,7 @@
         </ul>
         <ul class="navbar-nav">
           <li>
-            <the-locale-changer></the-locale-changer>
+            <TheLocaleChanger></TheLocaleChanger>
           </li>
         </ul>
       </div>
@@ -42,21 +43,13 @@
 </template>
 
 <script>
-import TheLocaleChanger from "@/components/TheLocaleChanger";
 import {mapGetters} from "vuex";
 
 export default {
   name: "TheNavbar",
-  components: {
-    TheLocaleChanger
-  },
   computed: {
     ...mapGetters(['services'])
-  }
-
+  },
+  layout: 'default',
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

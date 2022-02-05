@@ -38,4 +38,10 @@ export default {
 
 <style scoped>
 
+h2 {
+  font-size: 35px;
+  font-weight: inherit;
+  border: none;
+  text-decoration: none;
+}
 </style>

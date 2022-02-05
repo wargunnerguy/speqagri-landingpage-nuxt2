@@ -5,21 +5,16 @@
         <h5 v-if="!showDetails" class="card-subtitle">{{ name }}</h5>
         <div v-if="showDetails" class="card-text">{{ description }}</div>
       </div>
-      <the-service-item-button @click="toggleDetails">{{ moreInfo }}</the-service-item-button>
+      <TheServiceItemButton v-on:click="toggleDetails">{{ moreInfo }}</TheServiceItemButton>
       <a class="service-item-link mb-2 rounded" v-if="link.trim() !== ''" :key="link" :href="link">Link</a>
-      <nuxt-link class="service-item-link mb-2 rounded" v-if="uri.trim() !== ''" :key="uri" :to="uri">Link</nuxt-link>
+      <nuxt-link class="service-item-link mb-2 rounded" v-if="uri.trim() !== ''" :key="uri" :to="'/teenused/' + uri">Link</nuxt-link>
     </div>
 </template>
 
 <script>
-import TheServiceItemButton from "@/components/TheServiceItemButton";
-
 export default {
   name: "ServiceItem",
   props: ['img', 'description', 'name', 'link', 'uri'],
-  components: {
-    TheServiceItemButton
-  },
   data() {
     return {
       showDetails: false,
@@ -27,6 +22,7 @@ export default {
   },
   methods: {
     toggleDetails() {
+      console.log("TOGGLE CALLED")
       this.showDetails = !this.showDetails;
     }
   },

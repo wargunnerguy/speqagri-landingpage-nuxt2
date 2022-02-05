@@ -32,6 +32,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+ul {
+  text-decoration: none;
+}
 .content {
   font-family: 'Lato', sans-serif;
   font-size: 40px;

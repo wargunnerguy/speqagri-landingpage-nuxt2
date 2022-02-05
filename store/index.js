@@ -12,7 +12,7 @@ const createStore = () => {
           desc: "bulk_material_transport_service_text",
           img: "bulk_material_transport_service",
           link: "",
-          uri: "/puiste",
+          uri: "kruus-muld",
         },
         {
           id: "2",
@@ -21,7 +21,7 @@ const createStore = () => {
           desc: "recycled_asphalt_service_text",
           img: "recycled_asphalt_service",
           link: "",
-          uri: "/frees",
+          uri: "freesasfalt",
         },
         {
           id: "3",
@@ -30,7 +30,7 @@ const createStore = () => {
           desc: "car_rental_service_text",
           img: "car_rental_service",
           link: "",
-          uri: "car_rent",
+          uri: "rent/ford-tourneo",
         },
         {
           id: "4",
@@ -102,7 +102,7 @@ const createStore = () => {
           desc: "car_repair_service_text",
           img: "car_repair_service",
           link: "",
-          uri: "/car_repair",
+          uri: "",
         },
         {
           id: "12",
@@ -120,7 +120,7 @@ const createStore = () => {
           desc: "septic_tank_service_text",
           img: "septics",
           link: "",
-          uri: "/biopuhastid",
+          uri: "biopuhastid",
         },
       ]
     }

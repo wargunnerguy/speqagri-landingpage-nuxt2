@@ -1,6 +1,7 @@
+@import "custom";
+/*
 @import "~bootstrap/scss/functions"; // Required
 
-@import "custom";
 
 @import "~bootstrap/scss/variables"; // Required
 @import "~bootstrap/scss/mixins"; // Required
@@ -43,6 +44,8 @@
 
 // Utilities
 @import "~bootstrap/scss/utilities/api";
+*/
 
+@import "~bootstrap";
 // My Extra GLOBAL Styles separate from Bootstrap
 @import "app";
