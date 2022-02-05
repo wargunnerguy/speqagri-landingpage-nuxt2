@@ -1455,9 +1455,14 @@ responsive
   .header-area .main-nav .nav li ul.sub-menu li a {
     color: #1f272b;
   }
-
 }
 
+.bg-green-custom {
+  background-color: #1bac91
+}
+.bg-green-light-custom {
+  background-color: #26c8aa
+}
 
 
 </style>

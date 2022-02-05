@@ -35,7 +35,7 @@ export default {
       this.$i18n.locale = localeString;
     },
     getLocaleImg(locale) {
-      return require(`@/assets/img/flags/${locale}.png`)
+      return require(`~/assets/img/flags/${locale}.png`)
     },
   },
   created: function () {

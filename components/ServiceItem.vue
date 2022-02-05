@@ -1,14 +1,18 @@
 <template>
-    <div class="card m-2" :class="{'selectedServiceBg': showDetails}">
-      <img :src="img" class="card-img-top pt-2" alt="">
-      <div class="card-body text-light">
-        <h5 v-if="!showDetails" class="card-subtitle">{{ name }}</h5>
-        <div v-if="showDetails" class="card-text">{{ description }}</div>
-      </div>
-      <TheServiceItemButton v-on:click="toggleDetails">{{ moreInfo }}</TheServiceItemButton>
-      <a class="service-item-link mb-2 rounded" v-if="link.trim() !== ''" :key="link" :href="link">Link</a>
-      <nuxt-link class="service-item-link mb-2 rounded" v-if="uri.trim() !== ''" :key="uri" :to="'/teenused/' + uri">Link</nuxt-link>
+  <div class="card m-2" :class="{'selectedServiceBg': showDetails}">
+    <img :src="img" class="card-img-top pt-2" alt="">
+    <div class="card-body text-light">
+      <h5 v-if="!showDetails" class="card-subtitle">{{ name }}</h5>
+      <div v-if="showDetails" class="card-text">{{ description }}</div>
     </div>
+    <div class="btn-group-vertical">
+      <button class="btn mb-2" @click="toggleDetails">{{ moreInfo }}</button>
+      <a class="btn mb-2 rounded" v-if="link.trim() !== ''" :key="link" :href="link">Link</a>
+      <nuxt-link class="btn mb-2 rounded" v-if="uri.trim() !== ''" :key="uri" :to="'/teenused/' + uri">
+        Link
+      </nuxt-link>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -22,7 +26,6 @@ export default {
   },
   methods: {
     toggleDetails() {
-      console.log("TOGGLE CALLED")
       this.showDetails = !this.showDetails;
     }
   },
@@ -36,11 +39,6 @@ export default {
 </script>
 
 <style scoped>
-
-a {
-  padding: 0;
-  margin: 0;
-}
 
 .card {
   background-color: #f36f36;
@@ -60,7 +58,7 @@ p {
   background-color: #bb562a;
 }
 
-.service-item-link {
+.btn {
   text-transform: uppercase;
   background-color: #9d4823;
   color: #ec9070;

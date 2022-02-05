@@ -3,13 +3,13 @@
     <div class="card bg-transparent border-0">
       <div v-if="isImage"  v-lazy-container="{ selector: 'img' }">
         <img class="img-fluid image"
-             :data-src="require(`@/assets/img/masinad/${mediaName}`)"
-             :data-loading="require(`@/assets/img/masinad/${mediaTinyName}`)"
+             :data-src="require(`~/assets/img/masinad/${mediaName}`)"
+             :data-loading="require(`~/assets/img/masinad/${mediaTinyName}`)"
              data-error="xxx.jpg">
       </div>
       <video v-else autoplay loop muted>
-        <source :src="require(`@/assets/video/${mediaName}`)" type="video/mp4">
-        <source :src="require(`@/assets/video/${mediaName}`)" type="video/ogg">
+        <source :src="require(`~/assets/video/${mediaName}`)" type="video/mp4">
+        <source :src="require(`~/assets/video/${mediaName}`)" type="video/ogg">
         Ups, su brauser ei toeta selliseid videosid..
       </video>
       <div class="overlay">

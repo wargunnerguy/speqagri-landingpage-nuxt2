@@ -5,7 +5,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'SPEQ Agri NUXT2',
+    title: 'SPEQ Agri',
     htmlAttrs: {
       lang: 'et'
     },
@@ -38,6 +38,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'vue-social-sharing/nuxt',
     [
       '@nuxtjs/i18n',
       {
@@ -67,6 +68,9 @@ export default {
       }
     ]
   ],
+  env: {
+    baseUrl: 'www.speqagri.ee'
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {}
 }

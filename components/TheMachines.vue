@@ -26,13 +26,10 @@
 </template>
 
 <script>
-import MachineItem from "@/components/MachineItem";
 
 export default {
   name: "TheMachines",
-  components: {
-    MachineItem
-  }
+
 }
 </script>
 
