@@ -3,46 +3,15 @@
     <TheNavbar></TheNavbar>
     <Nuxt/>
     <TheFooter></TheFooter>
+    <StaticInfoBar
+      info="Hajaasustusprogramm 2022 on alanud! Taotluste esitamine siin (VAJUTA SIIA) - Küsi meilt kanalisatsiooni ja sissesõidutee hinnapakkumist"
+      link="https://jarvavald.kovtp.ee/et/uudised-ja-teated/-/asset_publisher/JMZZd7N4By63/content/id/33565708"></StaticInfoBar>
   </div>
 </template>
 <style lang="scss">
 
-/*
-
-TemplateMo 569 Edu Meeting
-
-https://templatemo.com/tm-569-edu-meeting
-
-*/
-
-/* ---------------------------------------------
-Table of contents
-------------------------------------------------
-01. font & reset css
-02. reset
-03. global styles
-04. header
-05. banner
-06. features
-07. testimonials
-08. contact
-09. footer
-10. preloader
-11. search
-12. portfolio
-
---------------------------------------------- */
-/*
----------------------------------------------
-font & reset css
----------------------------------------------
-*/
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
-/*
----------------------------------------------
-reset
----------------------------------------------
-*/
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -206,7 +175,7 @@ body {
 }
 
 .section-heading h2 {
-  border-bottom: 1px solid rgba(250,250,250,0.15);
+  border-bottom: 1px solid rgba(250, 250, 250, 0.15);
   font-size: 22px;
   font-weight: 700;
   text-transform: uppercase;
@@ -258,34 +227,34 @@ header
 }
 
 .background-header {
-  background-color: #fff!important;
-  height: 80px!important;
-  position: fixed!important;
-  top: 0!important;
+  background-color: #fff !important;
+  height: 80px !important;
+  position: fixed !important;
+  top: 0 !important;
   left: 0;
   right: 0;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.15)!important;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15) !important;
 }
 
 .background-header .main-nav .nav li a {
-  color: #1e1e1e!important;
+  color: #1e1e1e !important;
 }
 
 .background-header .logo,
 .background-header .main-nav .nav li a {
-  color: #1e1e1e!important;
+  color: #1e1e1e !important;
 }
 
 .background-header .main-nav .nav li:hover a {
-  color: #fb5849!important;
+  color: #fb5849 !important;
 }
 
 .background-header .nav li a.active {
-  color: #fb5849!important;
+  color: #fb5849 !important;
 }
 
 .header-area {
-  background-color: rgba(250,250,250,0.15);
+  background-color: rgba(250, 250, 250, 0.15);
   position: absolute;
   top: 40px;
   left: 0;
@@ -364,12 +333,12 @@ header
 
 .header-area .main-nav .nav li:hover a,
 .header-area .main-nav .nav li a.active {
-  color: #f5a425!important;
+  color: #f5a425 !important;
 }
 
 .background-header .main-nav .nav li:hover a,
 .background-header .main-nav .nav li a.active {
-  color: #f5a425!important;
+  color: #f5a425 !important;
   opacity: 1;
 }
 
@@ -415,7 +384,7 @@ header
   opacity: 1;
   display: block;
   background: #f7f7f7;
-  color: #2a2a2a!important;
+  color: #2a2a2a !important;
   padding-left: 20px;
   height: 40px;
   line-height: 40px;
@@ -431,7 +400,7 @@ header
 
 .header-area .main-nav .nav li.has-sub ul li a:hover {
   background: #fff;
-  color: #f5a425!important;
+  color: #f5a425 !important;
   padding-left: 25px;
 }
 
@@ -590,7 +559,7 @@ header
   }
   .header-area.header-sticky .nav li a:hover,
   .header-area.header-sticky .nav li a.active {
-    color: #f5a425!important;
+    color: #f5a425 !important;
     opacity: 1;
   }
   .header-area.header-sticky .nav li.search-icon a {
@@ -648,7 +617,7 @@ header
   }
   .header-area .main-nav .nav li a:hover {
     background: #eee !important;
-    color: #f5a425!important;
+    color: #f5a425 !important;
   }
   .header-area .main-nav .nav li.has-sub ul.sub-menu {
     position: relative;
@@ -714,7 +683,7 @@ banner
 
 .video-overlay {
   position: absolute;
-  background-color: rgba(31,39,43,0.75);
+  background-color: rgba(31, 39, 43, 0.75);
   top: 0;
   left: 0;
   bottom: 0;
@@ -825,7 +794,7 @@ services
   transform: translateY(-25px);
 }
 
-.services .owl-nav .owl-prev{
+.services .owl-nav .owl-prev {
   margin-right: 10px;
   outline: none;
   position: absolute;
@@ -869,7 +838,7 @@ services
   opacity: 0.9;
 }
 
-.services .owl-nav .owl-next{
+.services .owl-nav .owl-next {
   margin-left: 10px;
   outline: none;
   position: absolute;
@@ -901,7 +870,7 @@ section.upcoming-meetings {
   background-image: url(~assets/img/bg/seamless_tools-blurry.png);
   background-position: center center;
   background-attachment: fixed;
-  background-repeat:repeat;
+  background-repeat: repeat;
   background-size: initial;
   padding-top: 230px;
   padding-bottom: 110px;
@@ -977,7 +946,7 @@ section.upcoming-meetings .categories .main-button-red a {
   font-size: 16px;
   color: #1f272b;
   font-weight: 600;
-  background-color: rgba(250,250,250,0.9);
+  background-color: rgba(250, 250, 250, 0.9);
   padding: 7px 12px;
   border-radius: 10px;
 }
@@ -1025,7 +994,6 @@ section.upcoming-meetings .categories .main-button-red a {
 }
 
 
-
 /*
 ---------------------------------------------
 apply now
@@ -1042,7 +1010,7 @@ section.apply-now {
 }
 
 section.apply-now .item {
-  background-color: rgba(250,250,250,0.15);
+  background-color: rgba(250, 250, 250, 0.15);
   padding: 40px;
   margin-bottom: 30px;
 }
@@ -1066,12 +1034,15 @@ section.apply-now .item p {
   background-color: #fff;
   margin-left: 45px;
 }
+
 .accordions .accordion {
   border-bottom: 1px solid #eee;
 }
+
 .accordions .last-accordion {
   border-bottom: none;
 }
+
 .accordion-head {
   padding: 20px;
   font-size: 18px;
@@ -1081,29 +1052,35 @@ section.apply-now .item p {
   transition: color 200ms ease-in-out;
   border-bottom: 1px solid #fff;
 }
+
 @media screen and (min-width: 768px) {
   .accordion-head {
     padding: 1rem;
     font-size: 1.2rem;
   }
 }
+
 .accordion-head .icon {
   float: right;
   transition: transform 200ms ease-in-out;
 }
+
 .accordion-head.is-open {
   color: #f5a425;
   border-bottom: none;
 }
+
 .accordion-head.is-open .icon {
   transform: rotate(45deg);
 }
+
 .accordion-body {
   overflow: hidden;
   height: 0;
   transition: height 300ms ease-in-out;
   border-bottom: 1px solid #fff;
 }
+
 .accordion-body > .content {
   padding: 20px;
   padding-top: 0;
@@ -1192,7 +1169,7 @@ section.our-services {
   border-radius: 4px;
 }
 
-.our-services .owl-nav .owl-prev{
+.our-services .owl-nav .owl-prev {
   margin-right: 10px;
   outline: none;
   position: absolute;
@@ -1236,7 +1213,7 @@ section.our-services {
   opacity: 0.9;
 }
 
-.our-services .owl-nav .owl-next{
+.our-services .owl-nav .owl-next {
   margin-left: 10px;
   outline: none;
   position: absolute;
@@ -1314,6 +1291,7 @@ section.contact-us #contact h2 {
   font-size: 22px;
   font-weight: 700;
 }
+
 section.meetings-page {
   background-image: url(~static/../assets/img/bg/seamless_tools-blurry.png);
   background-position: center center;
@@ -1331,61 +1309,61 @@ responsive
 */
 
 @media (max-width: 1300px) {
-  .services .owl-nav .owl-next{
+  .services .owl-nav .owl-next {
     right: -30px;
   }
-  .services .owl-nav .owl-prev{
+  .services .owl-nav .owl-prev {
     left: -25px;
   }
-  .our-services .owl-nav .owl-next{
+  .our-services .owl-nav .owl-next {
     right: -30px;
   }
-  .our-services .owl-nav .owl-prev{
+  .our-services .owl-nav .owl-prev {
     left: -25px;
   }
 }
 
 @media (max-width: 1200px) {
-  .services .owl-nav .owl-next{
+  .services .owl-nav .owl-next {
     right: -70px;
   }
-  .services .owl-nav .owl-prev{
+  .services .owl-nav .owl-prev {
     left: -65px;
   }
-  .our-services .owl-nav .owl-next{
+  .our-services .owl-nav .owl-next {
     right: -70px;
   }
-  .our-services .owl-nav .owl-prev{
+  .our-services .owl-nav .owl-prev {
     left: -65px;
   }
 }
 
 @media (max-width: 1085px) {
-  .services .owl-nav .owl-next{
+  .services .owl-nav .owl-next {
     right: -30px;
   }
-  .services .owl-nav .owl-prev{
+  .services .owl-nav .owl-prev {
     left: -25px;
   }
-  .our-services .owl-nav .owl-next{
+  .our-services .owl-nav .owl-next {
     right: -30px;
   }
-  .our-services .owl-nav .owl-prev{
+  .our-services .owl-nav .owl-prev {
     left: -25px;
   }
 }
 
 @media (max-width: 1005px) {
-  .services .owl-nav .owl-next{
+  .services .owl-nav .owl-next {
     display: none;
   }
-  .services .owl-nav .owl-prev{
+  .services .owl-nav .owl-prev {
     display: none;
   }
-  .our-services .owl-nav .owl-next{
+  .our-services .owl-nav .owl-next {
     display: none;
   }
-  .our-services .owl-nav .owl-prev{
+  .our-services .owl-nav .owl-prev {
     display: none;
   }
 }
@@ -1460,6 +1438,7 @@ responsive
 .bg-green-custom {
   background-color: #1bac91
 }
+
 .bg-green-light-custom {
   background-color: #26c8aa
 }

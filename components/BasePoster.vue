@@ -11,6 +11,7 @@
         </div>
         <img v-else-if="img_link" class="card-img-top img-fluid p-3" :src="require(`~/assets/${img_link}`)" alt="">
         <div class="card-body">
+          <button class="btn btn-fb mb-2 rounded">
           <ShareNetwork
             network="facebook"
             :url="'www.speqagri.ee' + this.$route.path"
@@ -22,6 +23,7 @@
           >
             {{$t('share_facebook_text') }}
           </ShareNetwork>
+          </button>
           <slot></slot>
         </div>
         <base-button link="/" class="bg-green-light-custom text-light">{{ $t('to_homepage') }}</base-button>
@@ -54,5 +56,12 @@ h2 {
 
 .bg-green-light-custom {
   background-color: #26c8aa
+}
+
+.btn-fb {
+  text-transform: uppercase;
+  background-color: #4267B2;
+  color: #efefef;
+  font-weight: bold;
 }
 </style>

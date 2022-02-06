@@ -1,5 +1,5 @@
 <template>
-  <div class="content container-fluid">
+  <div class="content container-fluid d-none d-lg-block">
     <div class="content__container">
       <ul class="content__container__list">
         <li class="content__container__list__item" v-html="$t('bulk_material_transport_service_html')"></li>
@@ -42,6 +42,7 @@ ul {
   line-height: 40px;
   color: #ecf0f1;
   padding: 0 50px;
+  white-space: nowrap;
 
   &__container {
     font-weight: 600;
