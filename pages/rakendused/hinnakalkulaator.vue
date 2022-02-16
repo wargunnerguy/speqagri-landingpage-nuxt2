@@ -9,7 +9,7 @@
           <button v-for="location in quarry_locs" @click="toggleLocationFilter(location)" :key="location" type="button"
                   class="btn btn-primary ms-2 mt-3"
                   :class="{isActiveFilter: isAnActiveFilter(location), isNotActiveFilter: !isAnActiveFilter(location)}">
-            {{ location }}
+            <input type="checkbox" :checked="isAnActiveFilter(location)" autocomplete="off"> {{ location }}
           </button>
         </div>
       </div>
@@ -48,7 +48,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="product in filteredProducts" :key="product.id" :class="product.type">
+      <tr v-for="product in filteredProducts" :key="product.id" :class="product.type" @click="selectedProductId = product.id">
         <td>{{ productFullName(product) }}</td>
         <td>
           <button type="button" class="btn btn-primary m-0">
@@ -78,7 +78,7 @@
                     $t('calc_amount')
                   }} (min 5t)</span>
                 <input type="range" min="0" max="200" step="0.1" class="slider col-lg-7 d-none d-md-inline"
-                       v-model="selectedAmount">
+                       v-model="selectedAmount" >
                 <input class="form-control col-lg-2 col-sm-auto" type="number" v-model="selectedAmount">
                 <span class="input-group-text bg-green-custom">{{ $t('calc_tonnes') }}</span>
               </div>
@@ -135,7 +135,9 @@
                   </div>
                 </div>
               </div>
-              <span class="input-group-text bg-green-custom text-center"><strong>{{ $t('calc_prices_are_estimates') }}</strong></span>
+              <span class="input-group-text bg-green-custom justify-content-center text-wrap"><strong>{{
+                  $t('calc_prices_are_estimates')
+                }}</strong></span>
             </div>
           </div>
         </div>
