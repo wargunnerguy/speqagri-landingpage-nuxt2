@@ -56,7 +56,6 @@
           </button>
         </td>
         <td>{{ product.hindIlmaKm }} €/t</td>
-        <!--        <td>{{ calcTax(product.hindIlmaKm, 2) }} €/t</td>-->
         <td>{{ calcTotal(product.hindIlmaKm, 2) }} €/t</td>
         <td><input :id="'product_' + product.id" type="radio" :name="product.name" v-model="selectedProductId"
                    :value="product.id"></td>
@@ -136,6 +135,7 @@
                   </div>
                 </div>
               </div>
+              <span class="input-group-text bg-green-custom text-center"><strong>{{ $t('calc_prices_are_estimates') }}</strong></span>
             </div>
           </div>
         </div>
@@ -149,13 +149,13 @@ export default {
   name: "hinnakalkulaator",
   data() {
     return {
-      selectedAmount: 5,
-      selectedDistance: 20,
-      transportStartPrice: 50,
-      transportKmPrice: 2,
+      selectedAmount: 5, //esialgne valitud kogus
+      selectedDistance: 20, //esialgne valitud distants
+      transportStartPrice: 50, //min sõidutasu: hetkel pole kasutuses
+      transportKmPrice: 2, //km hind topelt, kuna edasi-tagasi sõit
       k2ibemaks: 0.2,
       selectedProductId: null,
-      selectedLocations: [],
+      selectedLocations: [], //filtri jaoks valitud asukohad
       sorting: 'desc',
       products: [
         {
@@ -789,7 +789,6 @@ export default {
     toggleLocationFilter(location) {
       if (this.selectedLocations.includes(location)) {
         this.selectedLocations = this.selectedLocations.filter(loc => loc !== location)
-        console.log(this.selectedLocations)
       } else {
         this.selectedLocations.push(location)
       }
@@ -829,7 +828,7 @@ export default {
     },
   },
   created() {
-    this.selectedLocations = [...this.quarry_locs]
+    this.selectedLocations = [this.quarry_locs[0]] // esialgsel avamisel pane valitud karjääriks ainult esimene karjäär
   }
 }
 </script>

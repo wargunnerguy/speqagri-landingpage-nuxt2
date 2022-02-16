@@ -16,6 +16,7 @@
   "calc_product": "Product",
   "calc_price": "Price",
   "calc_price_and_tax": "Price+tax",
+  "calc_prices_are_estimates": "Prices are approximate, call for exact price +372 5024530",
   "calc_select": "Select",
   "calc_select_atleast_one_location": "Select at least one suitable location",
   "calc_select_product": "Select a product, to calculate the price",

@@ -16,6 +16,7 @@
   "calc_product": "Toode",
   "calc_price": "Hind",
   "calc_price_and_tax": "Hind+km",
+  "calc_prices_are_estimates": "Hinnad on ligikaudsed, täpse hinna jaoks helista +372 5024530",
   "calc_select": "Vali",
   "calc_select_atleast_one_location": "Vali vähemalt üks sobiv asukoht",
   "calc_select_product": "Vali tabelist toode, mille hinda soovid teada",
