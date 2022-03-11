@@ -39,6 +39,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
     'vue-social-sharing/nuxt',
     [
       '@nuxtjs/i18n',
@@ -73,5 +74,6 @@ export default {
     baseUrl: 'www.speqagri.ee'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+
 }
