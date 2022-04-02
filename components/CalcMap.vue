@@ -1,65 +1,34 @@
 <template>
-  <div id="map">
-    <form>
-      <div id="floating-panel">
-        <b>Start: </b>
-        <select id="start" @change="searchAddressHandler" v-model="start">
-          <option value="chicago, il">Chicago</option>
-          <option value="st louis, mo">St Louis</option>
-          <option value="joplin, mo">Joplin, MO</option>
-          <option value="oklahoma city, ok">Oklahoma City</option>
-          <option value="amarillo, tx">Amarillo</option>
-          <option value="gallup, nm">Gallup, NM</option>
-          <option value="flagstaff, az">Flagstaff, AZ</option>
-          <option value="winona, az">Winona</option>
-          <option value="kingman, az">Kingman</option>
-          <option value="barstow, ca">Barstow</option>
-          <option value="san bernardino, ca">San Bernardino</option>
-          <option value="los angeles, ca">Los Angeles</option>
-        </select>
-        <b>End: </b>
-        <select id="end" @change="searchAddressHandler" v-model="end">
-          <option value="chicago, il">Chicago</option>
-          <option value="st louis, mo">St Louis</option>
-          <option value="joplin, mo">Joplin, MO</option>
-          <option value="oklahoma city, ok">Oklahoma City</option>
-          <option value="amarillo, tx">Amarillo</option>
-          <option value="gallup, nm">Gallup, NM</option>
-          <option value="flagstaff, az">Flagstaff, AZ</option>
-          <option value="winona, az">Winona</option>
-          <option value="kingman, az">Kingman</option>
-          <option value="barstow, ca">Barstow</option>
-          <option value="san bernardino, ca">San Bernardino</option>
-          <option value="los angeles, ca">Los Angeles</option>
-        </select>
-      </div>
-      <button type="submit" @click.prevent="searchAddressHandler">OTSI AADRESS</button>
-    </form>
+  <div class="card">
+    <div id="map">
+    </div>
   </div>
 </template>
 
 <script>
 import {Loader} from '@googlemaps/js-api-loader';
 
-
 export default {
   name: "CalcMap",
+  props: ['quarryLocation', 'startingLocation', 'destinationLocation', 'timeToCalculate'],
+  emits: ['calculated-distance', 'calculated-user-distance'],
   data() {
     return {
       GOOGLE_API_KEY: 'AIzaSyBhYGREcNa8CKluHvZHNUvVUcrd-dpHupo',
       enteredAddress: '',
-      start: 'chicago, il',
-      end: 'kingman, az'
+      totalDistance: 0,
+      totalUserDistance: 0,
     }
   },
   methods: {
     searchAddressHandler() {
+      this.totalDistance = 0;
+      this.totalUserDistance = 0;
       const loader = new Loader({
         apiKey: this.GOOGLE_API_KEY,
         version: "weekly",
         libraries: ["places"]
       });
-
       loader
         .load()
         .then((google) => {
@@ -67,28 +36,57 @@ export default {
           const directionsRenderer = new google.maps.DirectionsRenderer();
           const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 7,
-            center: {lat: 41.85, lng: -87.65},
+            center: 'Järvamaa',
           });
 
           directionsRenderer.setMap(map);
           directionsService
             .route({
-              origin: {
-                query: this.start,
-              },
-              destination: {
-                query: this.end,
-              },
+              origin: this.startingLocation,
+              destination: this.startingLocation,
+              waypoints: [
+                {
+                  location: this.destinationLocation,
+                  stopover: true,
+                },
+                {
+                location: this.quarryLocation,
+                stopover: true,
+              }],
               travelMode: 'DRIVING',
             })
             .then((response) => {
+              const legs = [...response.routes[0].legs];
+              legs.forEach((leg) => {
+                this.totalDistance += leg.distance.value / 1000; //meetrites
+              })
+              this.$emit('calculated-distance', this.totalDistance)
+            })
+            .catch((e) => window.alert("Asukohapäring ebaõnnestus: proovi uuesti"));
+          directionsService /* Kasutajale kuvatud teekond */
+            .route({
+              origin: this.quarryLocation,
+              destination: this.destinationLocation,
+              travelMode: 'DRIVING',
+            })
+            .then((response) => {
+              const legs = [...response.routes[0].legs];
+              legs.forEach((leg) => {
+                this.totalUserDistance += leg.distance.value / 1000; //meetrites
+              })
+              this.$emit('calculated-user-distance', this.totalUserDistance)
               directionsRenderer.setDirections(response);
             })
-            .catch((e) => window.alert("Directions request failed due to " + status));
+            .catch((e) => {console.log(e.message)})
         })
         .catch(e => {
           // do something
         });
+    }
+  },
+  watch: {
+    timeToCalculate: function () {
+      this.searchAddressHandler();
     }
   }
 }
@@ -98,6 +96,5 @@ export default {
 #map {
   width: 100%;
   height: 300px;
-  border: 1px solid red;
 }
 </style>

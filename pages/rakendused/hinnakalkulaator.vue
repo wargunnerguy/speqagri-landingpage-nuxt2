@@ -49,7 +49,7 @@
       </thead>
       <tbody>
       <tr v-for="product in filteredProducts" :key="product.id" :class="product.type"
-          @click="selectedProductId = product.id">
+          @click="setSelectedIdAndLocation(product)">
         <td>{{ productFullName(product) }}</td>
         <td>
           <button type="button" class="btn btn-primary m-0">
@@ -73,80 +73,119 @@
             {{ products.find(product => product.id === selectedProductId).fraktsioon.toLowerCase() }} -
             {{ $t('calc_approx_price') }}: </h3>
           <div class="card-body">
-            <div class="row">
-              <div class="input-group mb-1 ">
-                <span class="input-group-text bg-green-custom col-6 col-md-4 col-lg-3">{{
-                    $t('calc_amount')
-                  }} (min 5t)</span>
-                <input type="range" min="0" max="200" step="0.1" class="slider col-lg-7 d-none d-md-inline"
-                       v-model="selectedAmount">
-                <input class="form-control col-lg-2 col-sm-auto" type="number" v-model="selectedAmount">
-                <span class="input-group-text bg-green-custom">{{ $t('calc_tonnes') }}</span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-group mb-1 ">
-                <span class="input-group-text bg-green-custom col-6 col-md-4 col-lg-3">
-                  {{ $t('calc_distance_quarry') }}</span>
-                <input type="range" min="0" max="200" step="0.1" class="slider col-lg-7 d-none d-md-inline"
-                       v-model="selectedDistance">
-                <input class="form-control col-lg-2" type="number" v-model="selectedDistance">
-                <span class="input-group-text bg-green-custom">{{ $t('calc_km') }}</span>
-              </div>
-            </div>
-            <hr>
             <!-- Alumised calc andmed            -->
             <div class="row">
-              <!--  Transpordi MAP            -->
-              <div class="row">
-                <CalcMap></CalcMap>
+              <div class="col mb-1 ">
+                <CalcMap v-show="timeToCalculate"
+                         @calculated-distance="updateDistance($event)"
+                         @calculated-user-distance="updateUserShownDistance($event)"
+                         :quarry-location="selectedProductLocation"
+                         :starting-location="'Eesti, Koigi, Tammeküla'"
+                         :destination-location="destinationLocation"
+                         :time-to-calculate="timeToCalculate">
+                </CalcMap>
               </div>
+            </div>
+            <div class="row">
               <div class="col">
-              </div>
-              <div class="col">
-                <div class="d-flex flex-row-reverse">
+                <div class="d-flex justify-content-center mb-1">
+                  <div class="col-lg-4 col-sm-12 col-12">
+                      <span class="input-group-text bg-green-custom text-wrap">
+                        <strong>{{ $t('calc_full_loads_are_text')}} {{ listAllTruckSizesWithUnits}}{{$t('calc_tonnes_short')}}</strong>
+                      </span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <div class="col-lg-4 col-sm-12 col-12">
+                    <div class="input-group mb-1 ">
+                      <span class="input-group-text bg-green-custom col-lg-4 col-6 col-md-3 col-sm-3">
+                        {{ $t('calc_amount') }}
+                      </span>
+                      <input type="range" min="5" max="250" step="0.1" class="slider col-lg-4 d-none d-lg-inline"
+                             v-model="selectedAmount">
+                      <input class="form-control col-lg-4 col-sm-6 input-field" type="number" v-model="selectedAmount">
+                      <span class="input-group-text bg-green-custom">{{ $t('calc_tonnes') }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center">
                   <div class=" col-lg-4 col-sm-12 col-12">
                     <div class="input-group mb-1 ">
-                      <span class="input-group-text w-50 bg-green-custom">{{ $t('calc_material_price') }}</span>
-                      <input class="form-control" readonly type="number" v-model="totalProductPrice">
-                      <span class="input-group-text bg-green-custom">€</span>
+                      <input class="form-control col-lg-2" type="text" @keypress.enter="calculateDistance"
+                             v-model="destinationLocation"
+                             :placeholder="$t('calc_where_to')">
+                      <button type="button" class="input-group-text"
+                              style="background-color: #f36f36; font-weight: bold" @click="calculateDistance">
+                        {{ $t('calc_calculate') }}
+                      </button>
                     </div>
                   </div>
                 </div>
-                <div class="d-flex flex-row-reverse">
-                  <div class=" col-lg-4 col-sm-12 col-12">
-                    <div class="input-group mb-1">
-                      <span class="input-group-text w-50 bg-green-custom">{{ $t('calc_transport_price') }}</span>
-                      <input class="form-control" readonly type="number"
-                             v-model="totalTransportPrice">
-                      <span class="input-group-text bg-green-custom">€</span>
+                <div v-show="timeToCalculate">
+                  <hr>
+                  <div class="d-flex justify-content-center">
+                    <div class=" col-lg-4 col-sm-12 col-12">
+                      <div class="input-group mb-1 ">
+                        <span class="input-group-text w-75 bg-green-custom">
+                          {{
+                            $t('calc_material_price')
+                          }} ({{ products.find(product => product.id === selectedProductId).fraktsioon.toLowerCase() }}) {{
+                            selectedAmount
+                          }} {{
+                            $t('calc_tonnes')
+                          }}
+                        </span>
+                        <input class="form-control input-field" readonly type="number"
+                               v-model="totalProductPrice">
+                        <span class="input-group-text bg-green-custom">€</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="d-flex flex-row-reverse">
-                  <div class=" col-lg-4 col-sm-12 col-12">
-                    <div class="input-group mb-1">
-                      <span class="input-group-text w-50 bg-green-custom">{{ $t('calc_total_vat') }}</span>
-                      <input class="form-control" readonly type="number"
-                             v-model="totalTaxPrice">
-                      <span class="input-group-text bg-green-custom">€</span>
+                  <div class="d-flex justify-content-center">
+                    <div class=" col-lg-4 col-sm-12 col-12">
+                      <div class="input-group mb-1">
+                        <span class="input-group-text w-75 bg-green-custom">{{
+                            $t('calc_transport_price')
+                          }} ({{ necessaryTruckLoads }} {{ $tc('calc_truckload', necessaryTruckLoads) }} x {{ Math.round(selectedUserShownDistance) }}{{ $t('calc_km') }} x {{necessaryMinTruckSize}}{{$t('calc_tonnes_short')}}) </span>
+                        <input class="form-control input-field" readonly type="number"
+                               v-model="totalTransportPrice">
+                        <span class="input-group-text bg-green-custom">€</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="d-flex flex-row-reverse">
-                  <div class=" col-lg-4 col-sm-12 col-12">
-                    <div class="input-group mb-1">
-                      <span class="input-group-text w-50 bg-green-custom">{{ $t('calc_total_price') }}</span>
-                      <input class="form-control" readonly type="number"
-                             v-model="totalPrice">
-                      <span class="input-group-text bg-green-custom">€</span>
+                  <div class="d-flex justify-content-center">
+                    <div class=" col-lg-4 col-sm-12 col-12">
+                      <div class="input-group mb-1">
+                        <span class="input-group-text w-75 bg-green-custom">{{
+                            $t('calc_total_vat')
+                          }} ({{ k2ibemaks * 100 }}%) </span>
+                        <input class="form-control input-field" readonly type="number"
+                               v-model="totalTaxPrice">
+                        <span class="input-group-text bg-green-custom">€</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <div class=" col-lg-4 col-sm-12 col-12">
+                      <div class="input-group mb-1">
+                        <span class="input-group-text w-75 bg-green-custom">{{ $t('calc_total_price') }}</span>
+                        <input class="form-control input-field" readonly type="number"
+                               v-model="totalPrice">
+                        <span class="input-group-text   bg-green-custom">€</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <span class="input-group-text bg-green-custom justify-content-center text-wrap">
+                        <strong>
+                          {{ $t('calc_prices_are_estimates') }}
+                        </strong>
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
-              <span class="input-group-text bg-green-custom justify-content-center text-wrap"><strong>{{
-                  $t('calc_prices_are_estimates')
-                }}</strong></span>
             </div>
           </div>
         </div>
@@ -160,14 +199,21 @@ export default {
   name: "hinnakalkulaator",
   data() {
     return {
-      selectedAmount: 5, //esialgne valitud kogus
-      selectedDistance: 20, //esialgne valitud distants
+      selectedAmount: 15, //esialgne valitud kogus
+      selectedDistance: 0, //esialgne valitud distants
+      selectedUserShownDistance: 0, //kasutajale näidatav distants
       transportStartPrice: 50, //min sõidutasu: hetkel pole kasutuses
-      transportKmPrice: 2, //km hind topelt, kuna edasi-tagasi sõit
+      transportKmPrice: 1.2, //km hind käibemaksuta
       k2ibemaks: 0.2,
       selectedProductId: null,
+      selectedProductLocation: '',
+      destinationLocation: '',
       selectedLocations: [], //filtri jaoks valitud asukohad
+      necessaryTruckLoads: 1, //koormate arv transpordihinna arvutamiseks
+      necessaryMinTruckSize: [], //minimaalne autosuurus
+      truckCapacatiesInTons: [15, 30], //võimalikud autokoormad tonnides
       sorting: 'desc',
+      timeToCalculate: 0,
       products: [
         {
           id: "1",
@@ -776,8 +822,43 @@ export default {
     }
   },
   methods: {
+    updateDistance(val) {
+      this.selectedDistance = val;
+    },
+    updateUserShownDistance(val) {
+      this.selectedUserShownDistance = val;
+    },
+    calculateDistance() {
+      this.timeToCalculate++;
+    },
+    setSelectedIdAndLocation(product) {
+      this.selectedProductId = product.id;
+      this.selectedProductLocation = product.asukoht;
+    },
     calcTax(price, round) {
       return parseFloat(price * this.k2ibemaks).toFixed(round);
+    },
+    calcTruckLoads(loadInTons) {
+      let solutionFound = false;
+      let n = 1;
+      let possibleLoadSizes = [];
+
+      while (!solutionFound) {
+        possibleLoadSizes = this.truckCapacatiesInTons.filter(truck => {
+          return ((n * truck) / loadInTons) >= 1
+        })
+        if (possibleLoadSizes.length === 1) {
+          this.necessaryMinTruckSize = possibleLoadSizes[0];
+          this.necessaryTruckLoads = n;
+          solutionFound = true
+        }
+        if (possibleLoadSizes.length > 1) {
+          this.necessaryMinTruckSize = Math.min(...possibleLoadSizes);
+          this.necessaryTruckLoads = n;
+          solutionFound = true;
+        }
+        if (possibleLoadSizes.length === 0) n++;
+      }
     },
     calcTotal(price, round) {
       return parseFloat(price * (1 + this.k2ibemaks)).toFixed(round);
@@ -819,6 +900,9 @@ export default {
         }
       });
     },
+    listAllTruckSizesWithUnits() {
+      return this.truckCapacatiesInTons.join(this.$t('calc_tonnes_short') + ', ').replace(/,([^,]*)$/, ' ' + this.$t('and') + '$1')
+    },
     filteredProducts() {
       return this.sortedProducts.filter(prod => {
         return this.selectedLocations.includes(prod.asukoht.split(' ')[0])
@@ -829,17 +913,23 @@ export default {
     },
     totalProductPrice() {
       const productObj = this.products.find(prod => prod.id === this.selectedProductId);
-      return parseFloat(this.selectedAmount * productObj.hindIlmaKm).toFixed(2);
+      return parseFloat(this.selectedAmount * +productObj.hindIlmaKm).toFixed(2);
     },
     totalTransportPrice() {
-      return parseFloat(this.selectedDistance * this.transportKmPrice).toFixed(2);
+      return parseFloat((this.selectedDistance + ((this.necessaryTruckLoads - 1) * this.selectedUserShownDistance)) * this.transportKmPrice).toFixed(2);
     },
     totalTaxPrice() {
       return parseFloat(this.totalTransportPrice * this.k2ibemaks + this.totalProductPrice * this.k2ibemaks).toFixed(2);
     },
   },
+  watch: {
+    selectedAmount(newVal) {
+      this.calcTruckLoads(newVal);
+    }
+  },
   created() {
     this.selectedLocations = [this.quarry_locs[0]] // esialgsel avamisel pane valitud karjääriks ainult esimene karjäär
+    this.calcTruckLoads(this.selectedAmount);
   }
 }
 </script>
@@ -1059,6 +1149,24 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
   background: #127e6a;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.input-field {
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: right;
 }
 
 </style>
