@@ -28,6 +28,7 @@ export default {
       finalImgLink: ''
     }
   },
+  transition: "default",
   head() {
     return {
       title: this.title,
@@ -59,5 +60,19 @@ img {
   padding-top: 7rem;
   padding-bottom: 3rem;
 }
+</style>
+<style>
+.default-enter-active,
+.default-leave-active {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 200ms;
+}
+
+.default-enter,
+.default-leave-to {
+  opacity: 0;
+}
+
 </style>
 

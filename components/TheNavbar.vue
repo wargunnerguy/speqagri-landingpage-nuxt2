@@ -16,7 +16,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li v-for="service in services" :key="service.id"><a class="dropdown-item"
-                                                                   href="#">{{ $t(service.translation_tag) }}</a></li>
+                                                                   href="/#services">{{ $t(service.translation_tag) }}</a></li>
             </ul>
           </li>
           <li class="nav-item">
