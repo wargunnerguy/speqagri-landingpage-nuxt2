@@ -229,7 +229,7 @@ export default {
           ettevote: "OÜ Väo Paas",
           asukoht: "Koigi karjäär",
           fraktsioon: "Killustik fr 0/45",
-          hindIlmaKm: "3.8",
+          hindIlmaKm: "4",
           lisainfo: "",
           type: "killustik"
         },
@@ -238,7 +238,7 @@ export default {
           ettevote: "OÜ Väo Paas",
           asukoht: "Koigi karjäär",
           fraktsioon: "Killustik fr 0/32",
-          hindIlmaKm: "6",
+          hindIlmaKm: "6.3",
           lisainfo: "",
           type: "killustik"
         },
@@ -247,7 +247,7 @@ export default {
           ettevote: "OÜ Väo Paas",
           asukoht: "Koigi karjäär",
           fraktsioon: "Killustik fr 0/63",
-          hindIlmaKm: "6",
+          hindIlmaKm: "6.3",
           lisainfo: "",
           type: "killustik"
         },
@@ -256,7 +256,7 @@ export default {
           ettevote: "OÜ Väo Paas",
           asukoht: "Koigi karjäär",
           fraktsioon: "Killustik fr 8/16",
-          hindIlmaKm: "7.8",
+          hindIlmaKm: "8",
           lisainfo: "",
           type: "killustik"
         },
@@ -265,7 +265,7 @@ export default {
           ettevote: "OÜ Väo Paas",
           asukoht: "Koigi karjäär",
           fraktsioon: "Killustik fr 16/32",
-          hindIlmaKm: "7.4",
+          hindIlmaKm: "7.5",
           lisainfo: "",
           type: "killustik"
         },
@@ -292,7 +292,7 @@ export default {
           ettevote: "OÜ Väo Paas",
           asukoht: "Koigi karjäär",
           fraktsioon: "Killustik fr 0/8",
-          hindIlmaKm: "2.4",
+          hindIlmaKm: "2.5",
           lisainfo: "",
           type: "killustik"
         },
