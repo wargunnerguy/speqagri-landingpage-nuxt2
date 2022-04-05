@@ -48,7 +48,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="product in filteredProducts" :key="product.id" :class="product.type"
+      <tr v-for="product in filteredProducts" :key="product.id" :class="product.type" class="product"
           @click="setSelectedIdAndLocation(product)">
         <td>{{ productFullName(product) }}</td>
         <td>
@@ -63,7 +63,7 @@
       </tr>
       </tbody>
     </table>
-    <div class="container">
+    <div class="container" id="calculator">
       <div class="card bg-dark text-light">
         <h3 v-if="selectedLocations <= 0" class="bg-danger text-dark text-center w-100">
           {{ $t('calc_select_atleast_one_location') }}</h3>
@@ -91,7 +91,9 @@
                 <div class="d-flex justify-content-center mb-1">
                   <div class="col-lg-4 col-sm-12 col-12">
                       <span class="input-group-text bg-green-custom text-wrap">
-                        <strong>{{ $t('calc_full_loads_are_text')}} {{ listAllTruckSizesWithUnits}}{{$t('calc_tonnes_short')}}</strong>
+                        <strong>{{ $t('calc_full_loads_are_text') }} {{
+                            listAllTruckSizesWithUnits
+                          }}{{ $t('calc_tonnes_short') }}</strong>
                       </span>
                   </div>
                 </div>
@@ -131,9 +133,7 @@
                             $t('calc_material_price')
                           }} ({{ products.find(product => product.id === selectedProductId).fraktsioon.toLowerCase() }}) {{
                             selectedAmount
-                          }} {{
-                            $t('calc_tonnes')
-                          }}
+                          }}{{ $t('calc_tonnes_short') }}
                         </span>
                         <input class="form-control input-field" readonly type="number"
                                v-model="totalProductPrice">
@@ -146,7 +146,14 @@
                       <div class="input-group mb-1">
                         <span class="input-group-text w-75 bg-green-custom">{{
                             $t('calc_transport_price')
-                          }} ({{ necessaryTruckLoads }} {{ $tc('calc_truckload', necessaryTruckLoads) }} x {{ Math.round(selectedUserShownDistance) }}{{ $t('calc_km') }} x {{necessaryMinTruckSize}}{{$t('calc_tonnes_short')}}) </span>
+                          }} ({{ necessaryTruckLoads }} {{
+                            $tc('calc_truckload', necessaryTruckLoads)
+                          }} x {{ Math.round(selectedUserShownDistance) }}{{ $t('calc_km') }})
+                          <button type="button" class="btn btn-warning rounded-pill btn-sm" data-bs-toggle="modal"
+                                  data-bs-target="#infoModal">
+                            <strong>info</strong>
+                          </button>
+                        </span>
                         <input class="form-control input-field" readonly type="number"
                                v-model="totalTransportPrice">
                         <span class="input-group-text bg-green-custom">€</span>
@@ -187,6 +194,25 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{ $t('calc_transport_explanation_title') }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            {{ $t('calc_transport_explanation') }} {{ transportKmPrice }}€
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $t('calc_close_btn_text') }}</button>
           </div>
         </div>
       </div>
@@ -834,6 +860,7 @@ export default {
     setSelectedIdAndLocation(product) {
       this.selectedProductId = product.id;
       this.selectedProductLocation = product.asukoht;
+      document.getElementById('calculator').scrollIntoView();
     },
     calcTax(price, round) {
       return parseFloat(price * this.k2ibemaks).toFixed(round);
@@ -1168,5 +1195,10 @@ input[type=number] {
   padding-right: 5px;
   text-align: right;
 }
+
+.product:hover {
+  cursor: pointer;
+}
+
 
 </style>
