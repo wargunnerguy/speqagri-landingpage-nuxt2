@@ -31,7 +31,7 @@
   "calc_tonnes_short": "t",
   "calc_total_price": "Hind kokku",
   "calc_total_vat": "Käibemaks",
-  "calc_transport_explanation": "Kasutajakogemuse huvides näitame kaardil vaid teekonda karjäärist soovitud lõpp-punkti. Arvutamaks võimalikult täpne koguhind leiab kalkulaator lühima teekonna meie rekkapargist (asub Koigi lähiümbruses) karjäärini. Karjäärist soovitud lõpp-punkti. Kui koormaid tuleb rohkem, kui 1, siis lisandub vastav arv teekondi kasutaja valitud lõpp-punkti ja karjääri vahel. Seejärel arvutatakse lühim teekond kasutaja valitud lõpp-punktist tagasi meie rekkaparki. Kilomeetrihind on ",
+  "calc_transport_explanation": "Kasutajakogemuse huvides näitame kaardil vaid teekonda karjäärist soovitud lõpp-punkti. Arvutamaks võimalikult täpne koguhind leiab kalkulaator lühima teekonna meie rekkapargist (asub Koigi lähiümbruses) karjäärini. Karjäärist soovitud lõpp-punkti. Kui koormaid tuleb rohkem kui 1, siis lisandub vastav arv teekondi kasutaja valitud lõpp-punkti ja karjääri vahel. Seejärel arvutatakse lühim teekond kasutaja valitud lõpp-punktist tagasi meie rekkaparki. Kilomeetrihind on ",
   "calc_transport_explanation_title": "Kuidas transpordihind kujuneb?",
   "calc_transport_price": "Transport",
   "calc_truckload": "koorem | koormat",

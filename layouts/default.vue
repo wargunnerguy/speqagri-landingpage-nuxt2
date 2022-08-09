@@ -3,9 +3,9 @@
     <TheNavbar></TheNavbar>
     <Nuxt/>
     <TheFooter></TheFooter>
-    <StaticInfoBar
-      info="Hajaasustusprogramm 2022 on alanud! Taotluste esitamine siin (VAJUTA SIIA) - Küsi meilt kanalisatsiooni ja sissesõidutee hinnapakkumist"
-      link="https://jarvavald.kovtp.ee/et/uudised-ja-teated/-/asset_publisher/JMZZd7N4By63/content/id/33565708"></StaticInfoBar>
+<!--    <StaticInfoBar
+      info="Hajaasustusprogramm 2023 on alanud! Taotluste esitamine siin (VAJUTA SIIA) - Küsi meilt kanalisatsiooni ja sissesõidutee hinnapakkumist"
+      link="https://jarvavald.kovtp.ee/et/uudised-ja-teated/-/asset_publisher/JMZZd7N4By63/content/id/33565708"></StaticInfoBar>-->
   </div>
 </template>
 <style lang="scss">
