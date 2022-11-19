@@ -25,9 +25,9 @@
             </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" aria-current="page" to="/teenused/jobs">{{ $t('job_vacancies') }}
+            <nuxt-link class="nav-link" aria-current="page" to="/jobs">{{ $t('job_vacancies') }}
               <span
-                class="badge bg-danger">0</span></nuxt-link>
+                class="badge bg-success">1</span></nuxt-link>
           </li>
           <li class="nav-item">
             <nuxt-link class="nav-link" aria-current="page" to="/#contact">{{ $t('contact') }}</nuxt-link>

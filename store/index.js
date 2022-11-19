@@ -122,7 +122,7 @@ const createStore = () => {
             link: "",
             uri: "biopuhastid",
           },
-        ]
+        ],
       }
     },
     getters: {
