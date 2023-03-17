@@ -17,10 +17,13 @@
         <machine-item type="image" media-name='VolvoFM12_720_3.jpg' media-tiny-name="VolvoFM12_tiny.jpg">Volvo FM12, {{ $t("multilift") }}</machine-item>
         <machine-item type="image" media-name='VolvoFM12_CAT308_720_3.jpg' media-tiny-name="VolvoFM12_CAT308_tiny.jpg">Volvo FM12, {{ $t("multilift") }}        </machine-item>
         <machine-item type="image" media-name='VOLVOH12_720_3.jpg' media-tiny-name="VOLVOH12_tiny.jpg">Volvo FH12</machine-item>
+        <machine-item type="image" media-name='VolvoFH.jpg' media-tiny-name="VolvoFH_tiny.jpg">Volvo FH</machine-item>
+        <machine-item type="image" media-name='Manitou_720_3.png' media-tiny-name="Manitou_720_tiny.png">Manitou</machine-item>
+
       </div>
-      <div class="row row-cols-1">
+<!--      <div class="row row-cols-1">
         <machine-item type="image" media-name='topeltlai/Manitou_1440_3.jpg' media-tiny-name="topeltlai/Manitou_wide_tiny.jpg">Manitou</machine-item>
-      </div>
+      </div>-->
     </div>
   </section>
 </template>
