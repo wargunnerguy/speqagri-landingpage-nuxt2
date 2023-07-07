@@ -46,7 +46,6 @@
                 :title="title"
                 :description="description"
                 :quote="quote"
-                :hashtags="hashtags"
               >
                 {{$t('share_facebook_text') }}
               </ShareNetwork>
