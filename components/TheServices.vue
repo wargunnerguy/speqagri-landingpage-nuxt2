@@ -4,7 +4,7 @@
       <div class="section-heading">
         <h2>{{ $t('Services') }}</h2>
       </div>
-      <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-1 justify-content-center">
+      <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 justify-content-center">
         <service-item v-for="service in this.$store.state.services"
                       :key="service.id"
                       :img="require(`@/assets/img/icons/${service.img}.png`)"
