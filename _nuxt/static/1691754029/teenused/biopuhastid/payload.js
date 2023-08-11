@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/teenused/biopuhastid", {data:[{}],fetch:{},mutations:[]});
