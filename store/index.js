@@ -77,15 +77,15 @@ const createStore = () => {
                     link: "",
                     uri: "",
                   },*/
-          // {
-          //   id: "9",
-          //   name: "Rental",
-          //   translation_tag: "rental_service",
-          //   desc: "rental_service_text",
-          //   img: "rental_service",
-          //   link: "",
-          //   uri: "",
-          // },
+          {
+            id: "9",
+            name: "Rental",
+            translation_tag: "rental_service",
+            desc: "rental_service_text",
+            img: "rental_service",
+            link: "",
+            uri: "",
+          },
           /*        {
                     id: "10",
                     name: "Maintenance",
