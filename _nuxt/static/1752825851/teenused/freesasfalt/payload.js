@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/teenused/freesasfalt", {data:[{}],fetch:{},mutations:[]});

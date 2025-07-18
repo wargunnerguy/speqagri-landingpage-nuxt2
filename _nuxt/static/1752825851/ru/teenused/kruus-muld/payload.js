@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/ru/teenused/kruus-muld", {data:[{}],fetch:{},mutations:[]});

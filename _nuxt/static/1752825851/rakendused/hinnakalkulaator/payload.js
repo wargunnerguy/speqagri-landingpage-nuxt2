@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/rakendused/hinnakalkulaator", {data:[{}],fetch:{},mutations:[]});
