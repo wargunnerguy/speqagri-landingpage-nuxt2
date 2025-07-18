@@ -20,11 +20,6 @@
             </ul>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" href="#" tabindex="-1" aria-disabled="true" to="/rakendused/hinnakalkulaator">
-              {{ $t('calculator') }}
-            </nuxt-link>
-          </li>
-          <li class="nav-item">
             <nuxt-link class="nav-link" aria-current="page" to="/">{{ $t('job_vacancies') }}
               <span
                 class="badge bg-danger">0</span></nuxt-link>

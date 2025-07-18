@@ -14,7 +14,7 @@ export default {
   emits: ['calculated-distance', 'calculated-user-distance'],
   data() {
     return {
-      GOOGLE_API_KEY: 'AIzaSyBhYGREcNa8CKluHvZHNUvVUcrd-dpHupo',
+      GOOGLE_API_KEY: '', /* api key siia */
       enteredAddress: '',
       totalDistance: 0,
       totalUserDistance: 0,
