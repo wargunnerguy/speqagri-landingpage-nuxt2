@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/en/teenused/rent/ford-tourneo", {data:[{}],fetch:{},mutations:[]});
