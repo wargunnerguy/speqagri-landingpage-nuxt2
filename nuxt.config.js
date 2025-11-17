@@ -77,6 +77,13 @@ export default {
     baseUrl: 'www.speqagri.ee'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    postcss: {
+      plugins: {
+        'postcss-import': {},
+        'autoprefixer': {},
+      },
+    },
+  },
 
 }
